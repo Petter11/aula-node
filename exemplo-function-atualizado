@@ -1,0 +1,83 @@
+class Vendedor {
+  nome
+  cargo
+  vendas = []
+  comissao = 0
+  totalVendas = 0
+  
+  calcularComissao() {
+    this.comissao = this.totalVendas * this.cargo.percentual
+    this.comissao = parseFloat(this.comissao.toFixed(2))
+  }
+
+  calcularTotalDeVendas() {
+    this.vendas.forEach((venda) => {
+      this.totalVendas = this.totalVendas + venda.valor
+    })
+  }
+}
+
+class Venda {
+  valor = 0
+  produtos = []
+  quantidade
+  
+  calcularTotal() {
+    this.produtos.forEach((produto) => { // ArrowFunction é criado ao inves do function pq quando se passa o this. ele reconhece como sendo de dentro da função
+      this.valor = this.valor + (produto.valor * produto.quantidade)
+    })
+  }
+}
+
+class Cargo {
+  nome
+  percentual
+}
+
+class Produto {
+  nome
+  valor
+  quantidade
+  
+  constructor(nome, valor, quantidade) {
+    this.nome = nome
+    this.valor = valor
+    this.quantidade = quantidade
+  }
+}
+
+var produto1 = new Produto("Arroz", 5.90, 2)
+var produto2 = new Produto("Feijão", 8.50, 5)
+var produto3 = new Produto("Farinha", 3.40, 4)
+var produto4 = new Produto("Macarrão", 4.55, 6)
+
+var vendedor1 = new Cargo()
+vendedor1.nome = "Vendedor Nível 1"
+vendedor1.percentual = 0.05
+
+var vendedor2 = new Cargo()
+vendedor2.nome = "Vendedor Nível 2"
+vendedor2.percentual = 0.1
+
+var joaozinho = new Vendedor()
+joaozinho.nome = "João"
+joaozinho.cargo = vendedor1
+
+var venda1 = new Venda()
+venda1.produtos.push(produto1)
+venda1.produtos.push(produto3)
+venda1.calcularTotal()
+
+var venda2 = new Venda()
+venda2.produtos.push(produto2)
+venda2.produtos.push(produto4)
+venda2.calcularTotal()
+
+joaozinho.vendas.push(venda1)
+joaozinho.vendas.push(venda2)
+
+joaozinho.calcularTotalDeVendas()
+joaozinho.calcularComissao()
+
+console.log(joaozinho)
+
