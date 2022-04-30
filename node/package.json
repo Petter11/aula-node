@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "aula1": "ls -l",
+    "pedro": "node primeiro-programa.js",
+    "dev" : "nodemon index.js"
+  },
+  "author": "Pedro Cunha",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "minimist": "^1.2.6",
+    "nodemon": "^2.0.16"
+  }
+}
