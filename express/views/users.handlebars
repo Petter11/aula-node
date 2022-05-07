@@ -1,0 +1,15 @@
+{{!-- <h2>Olá, {{user.nome}}, seja bem-vindo!</h2>
+<h2>{{user.email}} !</h2> --}}
+
+
+{{!-- Dessa forma consegue trazer o atributo sem precisar repetir o nome do objeto --}}
+{{# with user}}
+    <h3>Olá, {{upperCase nome}}, seja bem-vindo!</h3>
+    <h4>{{email}}</h4>
+{{/ with}}
+
+{{# if auth}}
+    <p>Você está logado(a), seja bem-vindo</p>
+{{else}}
+    {{> login-form}}
+{{/ if}}
