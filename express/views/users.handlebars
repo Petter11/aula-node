@@ -3,7 +3,7 @@
 
 
 {{!-- Dessa forma consegue trazer o atributo sem precisar repetir o nome do objeto --}}
-{{# with user}}
+{{!-- {{# with user}}
     <h3>Olá, {{upperCase nome}}, seja bem-vindo!</h3>
     <h4>{{email}}</h4>
 {{/ with}}
@@ -12,4 +12,32 @@
     <p>Você está logado(a), seja bem-vindo</p>
 {{else}}
     {{> login-form}}
-{{/ if}}
+{{/ if}} --}}
+
+<h4>Listagem de Usuários</h4>
+<table class="table">
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+    </tr>
+    {{# each user}}
+    <tr>
+      <td>{{this.name }}</td>
+      <td>{{this.email }}</td>
+    {{/ each}}
+    </tr>
+</table>
+
+{{!-- <h3>Lista de Usuários</h3>
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+    </tr>
+    {{# each user}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+        </tr>
+    {{/ each}}
+</table> --}}
